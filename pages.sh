@@ -56,5 +56,4 @@ start=${1}
 
 sed -e "s/@PAGES@/$pages/" -e "s/@START@/$start/" pages.in.tex > \
     "${TMP}/pages.tex" && \
-    latex -shell-escape -output-directory "${TMP}" pages.tex && \
-    dvips ${outfile:+-o "${outfile}"} "${TMP}/pages"
+    latexmk -lualatex -g "${TMP}/pages.tex"
