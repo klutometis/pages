@@ -3,14 +3,8 @@
 \pagestyle{headings}
 \title{\greek{toi=s )Olumpi'ois qeoi=s}}
 \author{Peter Charles Danenberg}
+\date{\today}
 \begin{document}
-%% Thanks, Martin Scharrer:
-%% <http://tex.stackexchange.com/questions/17462/write18-pass-through-to-shell>
-\makeatletter
-%% Hack in lieu of \input "|ddate-local" (pdfetex > 1.4)
-\immediate\write18{ddate +'\@percentchar\@charlb\@percentchar A, the \@percentchar e of \@percentchar B\@percentchar\@charrb, \@percentchar Y' > ddate-pages.tex}
-\makeatother
-\date{\input{ddate-pages}}
 \maketitle
 %% Total pages, starting page-number.
 \newcommand{\pages}[2]{               %
