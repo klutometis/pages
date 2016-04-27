@@ -2,8 +2,7 @@
 declare -r THIS="${0}"
 declare -ri START=1
 declare -ri PAGES=100
-declare -r TMP=$(mktemp -d) || \
-    fail "Nicht workin' of tempdir, dude."
+declare -r TMP=$(mktemp -d)
 declare -i pages
 declare -i start
 declare getopt
@@ -46,5 +45,4 @@ start=${1}
 
 sed -e "s/@PAGES@/$pages/" -e "s/@START@/$start/" pages.in.tex > \
     "${TMP}/pages.tex" && \
-    latex -shell-escape -output-directory "${TMP}" pages.tex && \
-    dvips ${outfile:+-o "${outfile}"} "${TMP}/pages"
+    latexmk -lualatex -g "${TMP}/pages.tex"
